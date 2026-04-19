@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  dream-daily:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - VOLC_API_KEY=${VOLC_API_KEY:-}
+    volumes:
+      - dream-data:/app/backend/data
+
+volumes:
+  dream-data:
